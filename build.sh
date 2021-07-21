@@ -22,7 +22,8 @@ build_win(){
     (
         cd bin
         xrc 7z
-        _7z a ${appname}.x64.exe.7z ${appname}.x64.exe
+        _7z a -v1000k ${appname}.x64.exe.7z ${appname}.x64.exe
+        ls ${appname}.x64.exe.7z* | wc -l | tr -cd '0-9' > ${appname}.x64.exe.7z
         rm ${appname}.x64.exe
     )
 }
@@ -45,7 +46,8 @@ build_main(){
         cp "code/target/$rust_target/release/$exe" "bin/$target_name" && (
             cd bin && {
                 xrc 7z
-                _7z a "$target_name.7z" "$target_name"
+                _7z -v1000k a "$target_name.7z" "$target_name"
+                ls $target_name.7z* | wc -l | tr -cd '0-9' > "$target_name.7z"
                 rm "$target_name"
             }
         )
