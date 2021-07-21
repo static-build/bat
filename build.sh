@@ -37,6 +37,7 @@ build_main(){
     echo "Building $rust_target with $target_name"
 
     [ -f "bin/$target_name.7z" ] && return 0
+    [ -f "bin/$target_name.7z.001" ] && return 0
 
     (
         cd code && {
